@@ -10,7 +10,7 @@ test('renders props',()=>{
 
     
     const props = {
-        name:'Testing account',
+        name:'Should render the AccountCard component with the specified props',
         openingBalance:2500,
         dateOpened:'2022-06-22T10:58',
         accountType:{
