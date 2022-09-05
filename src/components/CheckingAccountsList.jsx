@@ -1,4 +1,3 @@
-
 import {useState,useEffect ,useContext} from 'react';
 import { getAllCheckingAccounts } from '../api';
 import { myContext } from '../context/Authcontext';

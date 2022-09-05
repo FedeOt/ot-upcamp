@@ -43,6 +43,7 @@ export const Login = () => {
         }
       );
       const token = response.data.authToken;
+      sessionStorage.setItem('token',token);
       setUser(token);
       console.log(token);
       nav('/home'); 

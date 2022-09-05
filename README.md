@@ -6,7 +6,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Use this command to run de App on your localhost:3000
+Use this command to run the App on your localhost:3000
 
 ### `npm test`
 
