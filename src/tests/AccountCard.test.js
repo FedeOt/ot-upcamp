@@ -2,6 +2,7 @@ import React from "react"
 import '@testing-library/jest-dom/extend-expect'
 import {render} from '@testing-library/react'
 import {AccountCard} from '../components/AccountCard'
+import { formatDateOpened } from "../moment/formatDateOpened"
 
 
 
@@ -11,7 +12,7 @@ test('renders props',()=>{
     const props = {
         name:'Testing account',
         openingBalance:2500,
-        dateOpened:'02-05-2022',
+        dateOpened:'2022-06-22T10:58',
         accountType:{
             name:'Something'
         }
@@ -22,7 +23,7 @@ test('renders props',()=>{
 
     component.getByText(props.name); 
     component.getByText(`Opening balance $ ${props.openingBalance}`);
-    component.getByText(`- Created ${props.dateOpened}`);
+    component.getByText(`- Created ${formatDateOpened(props.dateOpened)}`);
     component.getByText(props.accountType.name); 
 
     
