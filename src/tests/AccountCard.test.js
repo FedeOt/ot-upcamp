@@ -6,11 +6,11 @@ import { formatDateOpened } from "../moment/formatDateOpened"
 
 
 
-test('renders props',()=>{
+test('Should render the AccountCard component with the specified props',()=>{
 
     
     const props = {
-        name:'Should render the AccountCard component with the specified props',
+        name:'Account name',
         openingBalance:2500,
         dateOpened:'2022-06-22T10:58',
         accountType:{
