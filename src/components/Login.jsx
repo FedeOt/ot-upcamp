@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 
+
 const initialState = {
     username:'',
     password:''
@@ -43,7 +44,8 @@ export const Login = () => {
         }
       );
       const token = response.data.authToken;
-      sessionStorage.setItem('token',token);
+      sessionStorage.setItem('token',token); 
+      
       setUser(token);
       console.log(token);
       nav('/home'); 
