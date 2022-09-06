@@ -1,6 +1,6 @@
-import React from 'react'
+
 import { sidebarData } from '../data/sidebarData'
-import '../styles/Sidebar.css'
+
 
 export const Sidebar = () => {
   return (
