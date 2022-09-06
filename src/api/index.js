@@ -1,3 +1,7 @@
-import { Instance } from "../axios/Instance";
+import { axiosClient, getAuthHeader } from '../axios/Instance';
 
-export const getAllCheckingAccounts = () => Instance.get('user/account/checking'); 
+
+export const getAllCheckingAccounts = () =>
+  axiosClient.get('user/account/checking', {
+    headers: { Authorization: getAuthHeader() },
+  });
