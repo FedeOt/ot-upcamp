@@ -3,6 +3,7 @@ import { getAllCheckingAccounts } from '../api';
 import { AccountCard } from './AccountCard';
 
 
+
 export const CheckingAccountsList = () => {
 
     
@@ -16,18 +17,25 @@ export const CheckingAccountsList = () => {
           setCheckingAccounts(response.data);
           setLoading(false); 
       })
+      
 
     },[]); 
 
 
 
   return (
-    <div className='row row-cols-4'>
+    <div>
+      <h3 className='p-4 text-center'>Checking Accounts</h3>
+      <hr />
+      <div className='row row-cols-4'>
 
         {
           !loading && checkingAccounts.map((element, index) => <AccountCard key={index} account={element} />)
         }
 
       </div>
+
+    </div>
+    
   )
 }

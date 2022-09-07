@@ -48,7 +48,7 @@ export const Login = () => {
       
       setUser(token);
       console.log(token);
-      nav('/home'); 
+      nav('/bank/accounts'); 
 
     }catch(error){
 

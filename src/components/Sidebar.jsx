@@ -1,19 +1,19 @@
 
+import { Link } from 'react-router-dom'
 import { sidebarData } from '../data/sidebarData'
 
 
 export const Sidebar = () => {
   return (
     <div className='Sidebar'>
-      <h3 className='title'>Up Camp</h3>
+      <h3 className='title'>Banking</h3>
         <hr />
       <ul className='sidebar-ul'>
         {
             sidebarData.map((element,index)=>(
-              <li className='row' key={index}>
-                  <div className='link'>{element.icon}</div>
-                  <div className='link'>{element.title}</div>
-              </li>
+              <Link className='link' key={index} to={element.link}>{element.title}</Link>
+                  
+              
             ))
         }
       </ul>
