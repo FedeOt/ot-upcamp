@@ -10,8 +10,9 @@ const initialState = {
 
 export const CheckingAccountCreation = () => {
 
-    const [account,setAccount] = useState(initialState)
+    const [account,setAccount] = useState(initialState); 
     const [successAlert,setSuccessAlert] = useState(false); 
+    const [depositError,setDepositError] = useState(false); 
 
     const handleInputChange = ({target}) =>{
 
@@ -23,16 +24,19 @@ export const CheckingAccountCreation = () => {
     }
     
 
-    
     const resetForm = ()=>{
        setAccount(initialState); 
     }
     
-    
 
     const handleFormSubmit = async(e) =>{
         e.preventDefault(); 
-       
+        
+        if(Number(account.accountOpening) < 25){
+            return setDepositError(true); 
+        }
+
+
         const response = await postCheckingAccounts(account)
 
         if(response.status === 200){
@@ -66,7 +70,7 @@ export const CheckingAccountCreation = () => {
                 </div>
 
                 <div>
-                    <strong className="d-block mt-5 ms-3 mb-2">Select Account Ownership</strong>
+                    <strong className="d-block mt-4 ms-3 mb-2">Select Account Ownership</strong>
                     <div className="d-inline">
                         <input onChange={handleInputChange} name="accountOwnership" className="form-check-input ms-3" type="radio" value="IND" id="flexCheckDisabled" checked={account.accountOwnership === "IND"} />
                         <label className="ms-1"> Individual</label>
@@ -85,18 +89,19 @@ export const CheckingAccountCreation = () => {
 
                 <div className="ms-3 mt-4">
                     <strong>Account Name</strong>
-                    <input type="text" onChange={handleInputChange} name="accountName" className="form-control w-75" value={account.accountName}/>
+                    <input type="text" onChange={handleInputChange} autoComplete="off" name="accountName" className="form-control w-75" value={account.accountName}/>
 
                 </div>
                 <div className="ms-3 mt-4">
                     <strong>Initial deposit</strong>
-                    <input type="text" onChange={handleInputChange} name="accountOpening" className="form-control w-75" value={account.accountOpening} />
+                    <input type="text" onChange={handleInputChange} autoComplete="off" name="accountOpening" className="form-control w-75" value={account.accountOpening} />
+                    <span className={`${depositError ? 'text-danger' : 'text-dark'}`}>Minimum opening deposit is $25.00</span>
 
                 </div>
 
                 <div className="ms-3 mt-4">
-                    <button type="submit" className="btn btn-success">Crear</button>
-                    <button className="btn btn-danger ms-3">Cancelar</button>
+                    <button type="submit" className="btn btn-success">Create</button>
+                    <button onClick={resetForm} className="btn btn-danger ms-3">Cancel</button>
 
                 </div>
                 

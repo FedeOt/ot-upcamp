@@ -78,10 +78,19 @@ code {
 
   .Sidebar{
       width: 100%;
+      display: block;
+      float: none;
   }
   
- 
-  
+  .create-account-form{
+    width: 100%;
+    display: block;
+    margin-left: 0px;
+  }
+  .card{
+    width: 400px;
+    margin-left: 0px;
+  }
 }
 
 
