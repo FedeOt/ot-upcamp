@@ -110,7 +110,7 @@ export const CheckingAccountCreation = () => {
 
             </form>
             {
-                    successAlert && <div style={{marginLeft:400}} className="alert alert-success w-50 mt-3">The account has been created</div>
+                    successAlert && <div data-testid="success" style={{marginLeft:400}} className="alert alert-success w-50 mt-3">The account has been created</div>
             }
         </div>
 
