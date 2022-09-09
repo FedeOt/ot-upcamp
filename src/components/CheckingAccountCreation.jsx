@@ -32,7 +32,7 @@ export const CheckingAccountCreation = () => {
     const handleFormSubmit = async(e) =>{
         e.preventDefault(); 
         
-        if(Number(account.accountOpening) < 25){
+        if(Number(account.accountOpening || account.accountOpening === '') < 25){
             return setDepositError(true); 
         }
 
@@ -89,18 +89,18 @@ export const CheckingAccountCreation = () => {
 
                 <div className="ms-3 mt-4">
                     <strong>Account Name</strong>
-                    <input type="text" onChange={handleInputChange} autoComplete="off" name="accountName" className="form-control w-75" value={account.accountName}/>
+                    <input data-testid="account-name" type="text" onChange={handleInputChange} autoComplete="off" name="accountName" className="form-control w-75" value={account.accountName}/>
 
                 </div>
                 <div className="ms-3 mt-4">
                     <strong>Initial deposit</strong>
-                    <input type="text" onChange={handleInputChange} autoComplete="off" name="accountOpening" className="form-control w-75" value={account.accountOpening} />
+                    <input data-testid="initial-deposit" type="text" onChange={handleInputChange} autoComplete="off" name="accountOpening" className="form-control w-75" value={account.accountOpening} />
                     <span className={`${depositError ? 'text-danger' : 'text-dark'}`}>Minimum opening deposit is $25.00</span>
 
                 </div>
 
                 <div className="ms-3 mt-4">
-                    <button type="submit" className="btn btn-success">Create</button>
+                    <button data-testid="submit" type="submit" className="btn btn-success">Create</button>
                     <button onClick={resetForm} className="btn btn-danger ms-3">Cancel</button>
 
                 </div>

@@ -11,7 +11,7 @@ export const AccountCard = ({account}) => {
                   <p className='card-text'><strong>Type</strong> {account.accountType.name}</p>
                   <button className="btn btn-info">More Info</button>
                   <hr />
-                  <span>- Created {formatDate(account.dateOpened)}</span>
+                  <span>Created {formatDate(account.dateOpened)}</span>
               </div>
           </div>
       

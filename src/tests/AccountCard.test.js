@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect'
 import {render} from '@testing-library/react'
 import {AccountCard} from '../components/AccountCard'
-import { formatDateOpened } from "../moment/formatDate"
+import { formatDate } from "../moment/formatDate"
 
 
 
@@ -20,13 +20,14 @@ test('Should render the AccountCard component with the specified props',()=>{
 
     const component = render(<AccountCard account={props}/>);
 
-    component.getByText(props.name); 
-    component.getByText(`Opening balance $ ${props.openingBalance}`);
-    component.getByText(`- Created ${formatDateOpened(props.dateOpened)}`);
-    component.getByText(props.accountType.name); 
+    const name = component.getByText(props.name); 
+    const openingBalance = component.getByText(`Opening balance $ ${props.openingBalance}`);
+    const dateOpened = component.getByText(`Created ${formatDate(props.dateOpened)}`);
+    const accountTypeName = component.getByText(props.accountType.name); 
 
+    expect(name).toHaveTextContent(props.name); 
+    expect(openingBalance).toHaveTextContent(`Opening balance $ ${props.openingBalance}`);
+    expect(dateOpened).toHaveTextContent(`Created ${formatDate(props.dateOpened)}`); 
+    expect(accountTypeName).toHaveTextContent(props.accountType.name); 
     
-
-
-
-})
+});
