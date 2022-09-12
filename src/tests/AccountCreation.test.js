@@ -3,7 +3,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import { postCheckingAccounts } from '../api';
 import {CheckingAccountCreation} from '../components/CheckingAccountCreation'
 
-//this test is not finished yet
+
 jest.mock('../api/index.js');
 
 test('Should create the checking account with the given info',async()=>{
