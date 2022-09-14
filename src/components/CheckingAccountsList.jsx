@@ -5,9 +5,7 @@ import { AccountCard } from './AccountCard';
 
 
 export const CheckingAccountsList = () => {
-
-    
-     
+  
     const [checkingAccounts,setCheckingAccounts] = useState([]);
     const [loading,setLoading] = useState(true); 
 
