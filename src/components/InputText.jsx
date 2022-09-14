@@ -1,8 +1,8 @@
 
-export const InputText = ({onChange,name,value}) => {
+export const InputText = ({onChange,name,value,testId}) => {
     return (
-        <input
-        data-testid="account-name" 
+        <input 
+        data-testid={testId}
         type="text" 
         onChange={onChange} 
         autoComplete="off" 

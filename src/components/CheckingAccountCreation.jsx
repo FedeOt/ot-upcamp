@@ -73,13 +73,13 @@ export const CheckingAccountCreation = () => {
                 <div className="ms-3 mt-4">
                     
                     <strong>Account Name</strong>
-                    <InputText onChange={handleInputChange} name="accountName" value={account.accountName}/>
+                    <InputText onChange={handleInputChange} testId="account-name" name="accountName" value={account.accountName}/>
                     <ValidationMessage error={nameError} text="Account name is required"/>
 
                 </div>
                 <div className="ms-3 mt-4">
                     <strong>Initial deposit</strong>
-                    <InputText onChange={handleInputChange} name="accountOpening" value={account.accountOpening} />
+                    <InputText onChange={handleInputChange} testId="initial-deposit" name="accountOpening" value={account.accountOpening} />
                     <ValidationMessage error={depositError} text="Minimum opening deposit is $25.00"/>
                     
 

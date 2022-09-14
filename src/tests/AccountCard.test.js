@@ -3,19 +3,16 @@ import {render} from '@testing-library/react'
 import {AccountCard} from '../components/AccountCard'
 import { formatDate } from "../moment/formatDate"
 
-
+const props = {
+    name:'Account name',
+    openingBalance:2500,
+    dateOpened:'2022-06-22T10:58',
+    accountType:{
+        name:'Something'
+    }
+}
 
 test('Should render the AccountCard component with the specified props',()=>{
-
-    
-    const props = {
-        name:'Account name',
-        openingBalance:2500,
-        dateOpened:'2022-06-22T10:58',
-        accountType:{
-            name:'Something'
-        }
-    }
 
 
     const component = render(<AccountCard account={props}/>);
