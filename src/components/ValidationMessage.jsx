@@ -1,8 +1,7 @@
 
 
-export const ValidationMessage = ({error,text}) => {
+export const ValidationMessage = (props) => {
   return (
-    <span
-     className={`${error ? 'text-danger' : 'text-dark'}`}>{text}</span>
+    <span className={`${props.error ? 'text-danger' : 'text-dark'}`}>{props.text}</span>
   )
 }

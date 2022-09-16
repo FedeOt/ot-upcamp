@@ -1,13 +1,13 @@
 
-export const InputText = ({onChange,name,value,testId}) => {
+export const InputText = (props) => {
     return (
         <input 
-        data-testid={testId}
+        data-testid={props.testId}
         type="text" 
-        onChange={onChange} 
+        onChange={props.onChange} 
         autoComplete="off" 
-        name={name} 
+        name={props.name} 
         className="form-control w-75" 
-        value={value} />
+        value={props.value} />
     )
 }

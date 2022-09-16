@@ -10,12 +10,11 @@ const response = {
   status:200
 }
 
-const accountName = {
-  value:'testing'
+const account = {
+  name:{value:'testing'},
+  value:{value:'1200'}
 }
-const accountDeposit = {
-  value:'1200'
-}
+
 
 test('Should create the checking account with the given info',async()=>{
 
@@ -29,8 +28,8 @@ test('Should create the checking account with the given info',async()=>{
     const deposit = form.getByTestId('initial-deposit');
     const submit = form.getByTestId('submit'); 
 
-    fireEvent.change(name,{target:accountName}); 
-    fireEvent.change(deposit,{target:accountDeposit}); 
+    fireEvent.change(name,{target:account.name}); 
+    fireEvent.change(deposit,{target:account.value}); 
     fireEvent.click(submit);  
 
     await waitFor(()=>{

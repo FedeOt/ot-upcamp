@@ -24,12 +24,15 @@ export const CheckingAccountCreation = () => {
             ...account,
             [target.name]: target.value
         })
-
+        setNameError(false);
+        setDepositError(false); 
     }
 
 
     const resetForm = () => {
         setAccount(initialState);
+        setNameError(false);
+        setDepositError(false); 
     }
 
 
@@ -60,14 +63,14 @@ export const CheckingAccountCreation = () => {
                 <h3 className="bg-dark">New Checking Account</h3>
                 <div>
                     <strong className="d-block ms-3 mb-2">Select Account type</strong>
-                    <RadioButton label="Standard checking" name="accountType" onChange={handleInputChange} checked={account.accountType === 'SCK'} ivalue="SCK" />
-                    <RadioButton label="Interest checking" name="accountType" onChange={handleInputChange} checked={account.accountType === 'ICK'} ivalue="ICK" />
+                    <RadioButton label="Standard checking" name="accountType" onChange={handleInputChange} checked={account.accountType === 'SCK'} value="SCK" />
+                    <RadioButton label="Interest checking" name="accountType" onChange={handleInputChange} checked={account.accountType === 'ICK'} value="ICK" />
                 </div>
 
                 <div>
                     <strong className="d-block mt-4 ms-3 mb-2">Select Account Ownership</strong>
-                    <RadioButton label="Individual" name="accountOwnership" onChange={handleInputChange} checked={account.accountOwnership === 'IND'} ivalue="IND" />
-                    <RadioButton label="Joint" name="accountOwnership" onChange={handleInputChange} checked={account.accountOwnership === 'JNT'} ivalue="JNT" />    
+                    <RadioButton label="Individual" name="accountOwnership" onChange={handleInputChange} checked={account.accountOwnership === 'IND'} value="IND" />
+                    <RadioButton label="Joint" name="accountOwnership" onChange={handleInputChange} checked={account.accountOwnership === 'JNT'} value="JNT" />    
                 </div>
 
                 <div className="ms-3 mt-4">
@@ -87,7 +90,7 @@ export const CheckingAccountCreation = () => {
 
                 <div className="ms-3 mt-4">
                     <button data-testid="submit" type="submit" className="btn btn-success">Create</button>
-                    <button onClick={resetForm} className="btn btn-danger ms-3">Cancel</button>
+                    <button type="button" onClick={resetForm} className="btn btn-danger ms-3">Cancel</button>
 
                 </div>
 
