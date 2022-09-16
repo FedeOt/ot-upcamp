@@ -22,61 +22,74 @@ code {
 }
 
 
-/*.accounts-container{
-  width: 80%;
-  margin-left: 320px;
-  padding-top: 120px;
-  height: 100vh;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  
-}*/
 
 .Sidebar{
   height: 100vh;
   width:300px;
   background-color: #2F4050;
   color: white;
-  
   float:left;
   
   
 }
 
-.sidebar-ul{
-  list-style-type: none;
-  height: auto;
-  width: 100%;
-  padding-top: 30px;
-  text-align: center;
+.link{
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+  list-style: none;
+  color:white;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin:10px; 
+  
 }
 
-.sidebar-ul .row{
-  padding: 30px;
-  margin: 0%;
-  width: 80%;
-  height: 50px;
-  cursor: pointer;
-  
- 
+.link:hover{
+  background-color: black;
+  color:white; 
 }
+
 
 .title{
   text-align: center;
   padding-top: 100px;
 }
 
+.create-account-form{
+
+  width: 50%; 
+  margin-left: 400px; 
+  height: 500px;
+  border-radius: 15px;
+  
+}
+.create-account-form h3{
+  
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
 @media (max-width:600px) {
 
   .Sidebar{
       width: 100%;
+      display: block;
+      float: none;
   }
-  .accounts-container{
-    grid-template-columns: 1fr;
-  }
- 
   
+  .create-account-form{
+    width: 100%;
+    display: block;
+    margin-left: 0px;
+  }
+  .card{
+    width: 400px;
+    margin-left: 0px;
+  }
 }
 
 

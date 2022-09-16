@@ -5,3 +5,13 @@ export const getAllCheckingAccounts = () =>
   axiosClient.get('user/account/checking', {
     headers: { Authorization: getAuthHeader() },
   });
+  
+export const createCheckingAccount = (account) =>
+  axiosClient.post('user/account/', {
+    accountName: account.accountName,
+    accountTypeCode: account.accountType,
+    openingDeposit: Number(account.accountOpening),
+    ownerTypeCode: account.accountOwnership
+  }, {
+    headers: { Authorization: getAuthHeader() },
+  });

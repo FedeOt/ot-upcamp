@@ -1,27 +1,18 @@
-import HomeIcon from '@material-ui/icons/Home'
-import { AccountBalanceOutlined, CreditCard } from "@material-ui/icons"
-
 
 
 export const sidebarData = [
 
     {
-        title:"Home",
-        icon:<HomeIcon/>,
-        link:"/home"
+        title:"Checking Accounts",
+        link:"/bank/accounts"
 
     },
     {
-        title:"Accounts",
-        icon:<AccountBalanceOutlined/>,
-        link:"/accounts"
+        title:"Create Checking Account",
+        link:"/bank/creation"
 
     },
-    {
-        title:"Credit card",
-        icon:<CreditCard/>,
-        link:"/credit"
-    }
+    
 
 
 
