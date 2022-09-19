@@ -12,6 +12,16 @@ export const AccountCard = ({account}) => {
                   <p className='card-text'><strong>Type</strong> {account.accountType.name}</p>
                   <p className='card-text'><strong>Number </strong> {account.accountNumber}</p>
                   <hr />
+                  { 
+
+                    sessionStorage.getItem('role') === 'ROLE_ADMIN' &&
+                    <div>
+                      <button className='btn btn-info'>Update</button>
+                      <button className='btn btn-danger ms-3'>Delete</button>
+                      <hr />
+                    </div>
+                  }
+                  
                   <span>Created {formatDate(account.dateOpened)}</span>
               </div>
           </div>
