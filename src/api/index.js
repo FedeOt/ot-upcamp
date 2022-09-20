@@ -18,8 +18,6 @@ export const getAllCheckingAccounts = () =>{
     }
 }
 
-  
-  
 export const createCheckingAccount = (account) =>
   axiosClient.post('user/account/', {
     accountName: account.accountName,
@@ -30,4 +28,7 @@ export const createCheckingAccount = (account) =>
     headers: { Authorization: getAuthHeader() },
   });
 
-
+export const deleteAccount = (id) =>
+    axiosClient.delete(`/account/${id}`,{
+      headers: {Authorization: getAuthHeader()}
+    })

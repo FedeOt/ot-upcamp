@@ -8,6 +8,7 @@ export const CheckingAccountsList = () => {
   
     const [checkingAccounts,setCheckingAccounts] = useState([]);
     const [loading,setLoading] = useState(true); 
+    const [reRender,setRerender] = useState(false); 
 
     useEffect(()=>{
 
@@ -17,7 +18,7 @@ export const CheckingAccountsList = () => {
       })
       
 
-    },[]); 
+    },[reRender]); 
 
 
 
@@ -28,7 +29,7 @@ export const CheckingAccountsList = () => {
       <div className='row row-cols-4'>
 
         {
-          !loading && checkingAccounts.map((element, index) => <AccountCard key={index} account={element} />)
+          !loading && checkingAccounts.map((element, index) => <AccountCard key={index} account={element} flag={{reRender,setRerender}}/>)
         }
 
       </div>
