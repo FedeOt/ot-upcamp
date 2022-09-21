@@ -32,3 +32,8 @@ export const deleteAccount = (id) =>
     axiosClient.delete(`/account/${id}`,{
       headers: {Authorization: getAuthHeader()}
     })
+
+export const updateAccount = (id,data) =>
+    axiosClient.put(`/account/${id}`,{},
+    {headers:{Authorization: getAuthHeader()},
+    params:{newName:data}}); 
