@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { deleteAccount } from '../api'
+import { getRole } from '../axios/Instance';
 import { formatDate } from '../moment/formatDate'
 import { UpdateInput } from './UpdateInput';
 
@@ -38,7 +39,7 @@ export const AccountCard = (props) => {
                   }
                   { 
 
-                    sessionStorage.getItem('role') === 'ROLE_ADMIN' &&
+                    getRole() === 'ROLE_ADMIN' &&
                     <div>
                       <button data-testid="update-button" className='btn btn-info' onClick={toggleInput}>Update</button>
                       <button className='btn btn-danger ms-3' onClick={()=> handleDelete(props.account.id)}>Delete</button>
