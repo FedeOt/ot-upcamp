@@ -10,10 +10,7 @@ export const CheckingAccountsList = () => {
     const [checkingAccounts,setCheckingAccounts] = useState([]);
     const [loading,setLoading] = useState(true); 
     const [reRender,setRerender] = useState(false); 
-    
-
-    
-
+  
     useEffect(()=>{
 
       getAllCheckingAccounts().then(response => {
@@ -21,9 +18,7 @@ export const CheckingAccountsList = () => {
           setLoading(false); 
       })
       
-
     },[reRender]); 
-
 
 
   return (

@@ -45,12 +45,16 @@ export const Login = () => {
         headers:{Authorization:`Bearer ${token}`}
       });
 
-      const role = responseRole.data[0].authority;
+      const role = responseRole.data[0].authority + responseRole.data[1].authority ;
+
+      if(role.includes('ADMIN')){
+        sessionStorage.setItem('role','ROLE_ADMIN');
+      }
+      if(role.includes('USER')){
+        sessionStorage.setItem('role','ROLE_USER'); 
+      }
       
       sessionStorage.setItem('token',token); 
-      sessionStorage.setItem('role',role); 
-      
-      console.log(role);
       nav('/bank/accounts'); 
 
     }catch(error){
