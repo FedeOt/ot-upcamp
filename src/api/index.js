@@ -1,39 +1,37 @@
-import { axiosClient, getAuthHeader } from '../axios/Instance';
+import { axiosClient, getAuthHeader } from "../axios/Instance";
 
+export const getAllCheckingAccounts = () => {
+  const role = sessionStorage.getItem("role");
 
-export const getAllCheckingAccounts = () =>{
+  const partialUrl = role === 'ROLE_USER' ? 'user' : ''; 
+    return axiosClient.get(`${partialUrl}/account/checking`, {
+      headers: { Authorization: getAuthHeader() },
+    }); 
 
-    const role = sessionStorage.getItem('role');
-
-    if(role === 'ROLE_USER'){
-      return axiosClient.get('user/account/checking', {
-        headers: { Authorization: getAuthHeader() },
-      });
-    }
-
-    if(role === 'ROLE_ADMIN'){
-      return axiosClient.get('/account/checking', {
-        headers: { Authorization: getAuthHeader() },
-      });
-    }
-}
+};
 
 export const createCheckingAccount = (account) =>
-  axiosClient.post('user/account/', {
-    accountName: account.accountName,
-    accountTypeCode: account.accountType,
-    openingDeposit: Number(account.accountOpening),
-    ownerTypeCode: account.accountOwnership
-  }, {
+  axiosClient.post(
+    "user/account/",
+    {
+      accountName: account.accountName,
+      accountTypeCode: account.accountType,
+      openingDeposit: Number(account.accountOpening),
+      ownerTypeCode: account.accountOwnership,
+    },
+    {
+      headers: { Authorization: getAuthHeader() },
+    }
+  );
+
+export const deleteAccount = (id) =>
+  axiosClient.delete(`/account/${id}`, {
     headers: { Authorization: getAuthHeader() },
   });
 
-export const deleteAccount = (id) =>
-    axiosClient.delete(`/account/${id}`,{
-      headers: {Authorization: getAuthHeader()}
-    })
-
-export const updateAccount = (id,data) =>
-    axiosClient.put(`/account/${id}`,{},
-    {headers:{Authorization: getAuthHeader()},
-    params:{newName:data}}); 
+export const updateAccount = (id, name) =>
+  axiosClient.put(
+    `/account/${id}`,
+    {},
+    { headers: { Authorization: getAuthHeader() }, params: { newName: name } }
+  );
