@@ -19,7 +19,7 @@ export const UpdateInput = (props) => {
       if(inputValue.trim() === ''){
         return setNewNameEmpty(true); 
       }
-      console.log(inputValue); 
+       
       await updateAccount(props.accountId,inputValue); 
       props.toggleInput();
       props.setRerender(!props.reRender);  

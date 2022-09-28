@@ -11,16 +11,12 @@ export const AccountCard = (props) => {
 
   const handleDelete = async(id) =>{
 
-    const response = await deleteAccount(id);
-    console.log(response.status); 
+    await deleteAccount(id); 
     props.flag.setRerender(!props.flag.reRender); 
-
-
   }
 
   const toggleInput = () =>{
     setInputOpen(!inputOpen); 
-    console.log(inputOpen); 
   }
   
 
