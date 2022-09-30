@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCheckingAccounts } from '../api';
-import { updateAccounts } from '../redux/accountSlice';
+import { getAccounts } from '../redux/accountSlice';
 import { AccountCard } from './AccountCard';
 
 
@@ -18,12 +18,12 @@ export const CheckingAccountsList = () => {
     useEffect(()=>{
       
       getAllCheckingAccounts().then(response => {
-        dispatch(updateAccounts(response.data))
+        dispatch(getAccounts(response.data))
         setLoading(false); 
       })
       
       
-    },[reRender]); 
+    },[reRender,dispatch]); 
 
 
   return (

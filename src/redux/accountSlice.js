@@ -6,11 +6,11 @@ const accountSlice = createSlice({
         accounts:[]
     },
     reducers:{
-        updateAccounts(state,action){
+        getAccounts(state,action){
             state.accounts = action.payload; 
         }
     }
 }); 
 
-export const {updateAccounts} = accountSlice.actions;
+export const {getAccounts} = accountSlice.actions;
 export default accountSlice.reducer; 

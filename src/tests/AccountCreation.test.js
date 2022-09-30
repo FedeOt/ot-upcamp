@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { createCheckingAccount } from '../api';
 import {CheckingAccountCreation} from '../components/CheckingAccountCreation'
 
@@ -35,10 +35,6 @@ test('Should create the checking account with the given info',async()=>{
     await waitFor(()=>{
       expect(form.getByTestId('success')).toBeInTheDocument(); 
     })
-    
   
-  
-
-
     
 })
