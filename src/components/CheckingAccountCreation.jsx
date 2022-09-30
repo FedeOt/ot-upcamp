@@ -52,7 +52,9 @@ export const CheckingAccountCreation = () => {
         if (response.status === 200) {
             setSuccessAlert(true);
             resetForm();
-
+            setTimeout(() => {
+                setSuccessAlert(false); 
+            }, 2000);
         }
     }
 

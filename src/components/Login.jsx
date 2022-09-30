@@ -1,7 +1,4 @@
-
-import { useContext } from 'react'
 import { useState } from 'react'
-import { myContext } from '../context/Authcontext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,8 +10,6 @@ const initialState = {
 }
 
 export const Login = () => {
-
-  const {setUser} = useContext(myContext);
   
   const nav = useNavigate(); 
 
@@ -35,7 +30,7 @@ export const Login = () => {
 
     try{
 
-      const response = await axios.post('http://localhost:8080/bank/api/v1/auth', {},
+      const responseToken = await axios.post('http://localhost:8080/bank/api/v1/auth', {},
         {
           params: {
             username: loginForm.username,
@@ -43,11 +38,22 @@ export const Login = () => {
           }
         }
       );
-      const token = response.data.authToken;
-      sessionStorage.setItem('token',token); 
+      const token = responseToken.data.authToken;
       
-      setUser(token);
-      console.log(token);
+      const responseRole = await axios.get('http://localhost:8080/bank/api/v1/user/role',{
+        headers:{Authorization:`Bearer ${token}`}
+      });
+
+      const role = responseRole.data[0].authority + responseRole.data[1].authority ;
+
+      if(role.includes('ADMIN')){
+        sessionStorage.setItem('role','ROLE_ADMIN');
+      }
+      if(role.includes('USER')){
+        sessionStorage.setItem('role','ROLE_USER'); 
+      }
+      
+      sessionStorage.setItem('token',token); 
       nav('/bank/accounts'); 
 
     }catch(error){

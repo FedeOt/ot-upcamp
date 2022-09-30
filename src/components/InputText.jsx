@@ -8,6 +8,7 @@ export const InputText = (props) => {
         autoComplete="off" 
         name={props.name} 
         className="form-control w-75" 
-        value={props.value} />
+        value={props.value}
+        />
     )
 }
