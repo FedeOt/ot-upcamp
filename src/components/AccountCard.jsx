@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { deleteAccount } from '../api'
-import { getRole } from '../axios/Instance';
-import { formatDate } from '../moment/formatDate'
+import { deleteAccount } from '../api';
+import { getRole } from '../helpers/sessionStorage';
+import { formatDate } from '../moment/formatDate'; 
 import { UpdateInput } from './UpdateInput';
 
 

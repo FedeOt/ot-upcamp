@@ -1,4 +1,6 @@
-import { axiosClient, getAuthHeader } from "../axios/Instance";
+import { axiosClient } from "../axios/Instance";
+import { getAuthHeader } from "../helpers/sessionStorage";
+
 
 export const getAllCheckingAccounts = () => {
   const role = sessionStorage.getItem("role");
