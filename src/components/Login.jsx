@@ -54,6 +54,7 @@ export const Login = () => {
       }
       
       sessionStorage.setItem('token',token); 
+      
       nav('/bank/accounts'); 
 
     }catch(error){
