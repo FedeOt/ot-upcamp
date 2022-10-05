@@ -47,10 +47,10 @@ export const Login = () => {
       const role = responseRole.data[0].authority + responseRole.data[1].authority ;
 
       if(role.includes('ADMIN')){
-        sessionStorage.setItem('role','ROLE_ADMIN');
+         sessionStorage.setItem('role','ROLE_ADMIN');
       }
       if(role.includes('USER')){
-        sessionStorage.setItem('role','ROLE_USER'); 
+         sessionStorage.setItem('role','ROLE_USER'); 
       }
       
       sessionStorage.setItem('token',token); 
@@ -70,9 +70,9 @@ export const Login = () => {
   return (
     
       <form onSubmit={handleSubmit} className='login-form'>
-        <input onChange={handleInputChange} value={loginForm.username} autoComplete="off" name='username' className='form-control w-75 mx-auto mt-5 text-center' type="text" placeholder='Username' />
-        <input onChange={handleInputChange} value={loginForm.password} name='password' className='form-control w-75 mx-auto mt-4 text-center' type="password" placeholder='Password' />
-        <button type='submit' className='btn btn-primary w-75 d-block mx-auto mt-5'>Log In</button>
+        <input data-testid="username" onChange={handleInputChange} value={loginForm.username} autoComplete="off" name='username' className='form-control w-75 mx-auto mt-5 text-center' type="text" placeholder='Username' />
+        <input data-testid="password" onChange={handleInputChange} value={loginForm.password} name='password' className='form-control w-75 mx-auto mt-4 text-center' type="password" placeholder='Password' />
+        <button data-testid="login-submit" type='submit' className='btn btn-primary w-75 d-block mx-auto mt-5'>Log In</button>
         <hr />
         {
         error && <div className='alert alert-danger mt-2 text-center'>Wrong credentials!</div>

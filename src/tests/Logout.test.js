@@ -1,11 +1,8 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Logout } from "../components/Logout";
 import { Login } from "../components/Login";
 
-
-
-const mockedUsedNavigate = jest.fn();
 
 const credentials = {
     username:'jsmith@demo.io',
@@ -14,13 +11,16 @@ const credentials = {
 const testingToken = 'SOME_TOKEN'; 
 const testingRole = 'ROLE_USER';
 
+const mockedUsedNavigate = jest.fn();
+
+
 jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
+    ...jest.requireActual('react-router-dom'),
+   useNavigate: () => mockedUsedNavigate,
 }));
 
-jest.mock('axios');
 
+jest.mock("axios"); 
 
 
 describe('Login/logout test suite',()=>{
@@ -33,16 +33,24 @@ describe('Login/logout test suite',()=>{
     
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/'); 
     
-    
-    
     })
 
-    it('Should access into the app after login',()=>{
+    it('Should access into the app after login',async()=>{
         const login = render(<Login/>);
         
         axios.post.mockResolvedValue(testingToken); 
         axios.get.mockResolvedValue(testingRole); 
-         
+
+        const inputUsername = login.getByTestId('username');
+        const inputPassword = login.getByTestId('password'); 
+        const submitBtn = login.getByTestId('login-submit'); 
+        fireEvent.change(inputUsername,{target:{value:credentials.username}}); 
+        fireEvent.change(inputPassword,{target:{value:credentials.password}}); 
+        fireEvent.click(submitBtn); 
+
+        await waitFor(()=>{
+            expect(mockedUsedNavigate).toHaveBeenCalled(); 
+        })
 
 
 
