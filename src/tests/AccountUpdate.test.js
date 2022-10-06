@@ -1,11 +1,14 @@
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { getRole } from "../axios/Instance";
+import { getRole } from '../helpers/sessionStorage'; 
 import { AccountCard } from "../components/AccountCard";
+import { updateAccount } from "../api";
 
-jest.mock("../axios/Instance.js"); 
 
-const inputValue = "New account";
+jest.mock('../helpers/sessionStorage'); 
+jest.mock('../api/index'); 
+
+const inputValue = "New name";
 
 const account = {
   name: "Account name",
@@ -31,6 +34,7 @@ const reRender = false;
 
 test("Should update the account with the new name", async () => {
   getRole.mockReturnValue("ROLE_ADMIN");
+  updateAccount.mockResolvedValue(); 
    
    const updateComponent = render(
      <AccountCard account={account} flag={{ reRender, setRerender }} />

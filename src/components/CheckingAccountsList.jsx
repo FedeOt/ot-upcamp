@@ -1,5 +1,7 @@
 import {useState,useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllCheckingAccounts } from '../api';
+import { getAccounts } from '../redux/accountReducer';
 import { AccountCard } from './AccountCard';
 
 
@@ -7,18 +9,21 @@ import { AccountCard } from './AccountCard';
 
 export const CheckingAccountsList = () => {
   
-    const [checkingAccounts,setCheckingAccounts] = useState([]);
+    const dispatch = useDispatch();
     const [loading,setLoading] = useState(true); 
     const [reRender,setRerender] = useState(false); 
+     
+    const {accounts} = useSelector(state => state.accounts); 
   
     useEffect(()=>{
-
+      
       getAllCheckingAccounts().then(response => {
-          setCheckingAccounts(response.data);
-          setLoading(false); 
+        dispatch(getAccounts(response.data))
+        setLoading(false); 
       })
       
-    },[reRender]); 
+      
+    },[reRender,dispatch]); 
 
 
   return (
@@ -29,7 +34,7 @@ export const CheckingAccountsList = () => {
       <div className='row row-cols-4'>
 
         {
-          !loading && checkingAccounts.map((element, index) => <AccountCard key={index} account={element} flag={{reRender,setRerender}}/>)
+          !loading && accounts.map((element, index) => <AccountCard key={index} account={element} flag={{reRender,setRerender}}/>)
         }
 
       </div>
