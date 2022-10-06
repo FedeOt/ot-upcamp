@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import accountReducer from '../redux/accountSlice'; 
+import accountReducer from './accountReducer'; 
 
 
 

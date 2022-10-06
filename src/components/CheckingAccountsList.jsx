@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCheckingAccounts } from '../api';
-import { getAccounts } from '../redux/accountSlice';
+import { getAccounts } from '../redux/accountReducer';
 import { AccountCard } from './AccountCard';
 
 
