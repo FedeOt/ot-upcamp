@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom'
 import { sidebarData } from '../data/sidebarData'
+import { getRole } from '../helpers/sessionStorage'
 
 
 export const Sidebar = () => {
@@ -17,6 +18,11 @@ export const Sidebar = () => {
             ))
         }
       </ul>
+      <hr />
+      {
+        getRole() === 'ROLE_ADMIN' && 
+        <Link className='link' to='/bank/Registration'>Create User</Link>
+      }
     </div>
   )
 }
