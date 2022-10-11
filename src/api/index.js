@@ -44,6 +44,6 @@ export const getAuthToken = (credentials) =>
     }}); 
 
 export const getAuthRole = (token) =>
-    axiosClient.get('http://localhost:8080/bank/api/v1/user/role',{
+    axiosClient.get('/user/role',{
       headers:{Authorization:`Bearer ${token}`}
     });
