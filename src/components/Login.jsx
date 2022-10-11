@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { getAuthToken } from '../api'
 
 
 
@@ -14,13 +15,13 @@ export const Login = () => {
   const nav = useNavigate(); 
 
 
-  const [loginForm,setLoginForm] = useState(initialState); 
+  const [credentials,setCredentials] = useState(initialState); 
   const [error,setError] = useState(false); 
 
   const handleInputChange = ({target}) =>{
 
-    setLoginForm({
-      ...loginForm,
+    setCredentials({
+      ...credentials,
       [target.name]:target.value})
 
   }
@@ -30,19 +31,10 @@ export const Login = () => {
 
     try{
 
-      const responseToken = await axios.post('http://localhost:8080/bank/api/v1/auth', {},
-        {
-          params: {
-            username: loginForm.username,
-            password: loginForm.password
-          }
-        }
-      );
+      const responseToken = await getAuthToken(credentials); 
       const token = responseToken.data.authToken;
       
-      const responseRole = await axios.get('http://localhost:8080/bank/api/v1/user/role',{
-        headers:{Authorization:`Bearer ${token}`}
-      });
+      const responseRole = await getAuthToken(token); 
 
       const role = responseRole.data[0].authority + responseRole.data[1].authority ;
 
@@ -71,8 +63,8 @@ export const Login = () => {
   return (
     
       <form onSubmit={handleSubmit} className='login-form'>
-        <input data-testid="username" onChange={handleInputChange} value={loginForm.username} autoComplete="off" name='username' className='form-control w-75 mx-auto mt-5 text-center' type="text" placeholder='Username' />
-        <input data-testid="password" onChange={handleInputChange} value={loginForm.password} name='password' className='form-control w-75 mx-auto mt-4 text-center' type="password" placeholder='Password' />
+        <input data-testid="username" onChange={handleInputChange} value={credentials.username} autoComplete="off" name='username' className='form-control w-75 mx-auto mt-5 text-center' type="text" placeholder='Username' />
+        <input data-testid="password" onChange={handleInputChange} value={credentials.password} name='password' className='form-control w-75 mx-auto mt-4 text-center' type="password" placeholder='Password' />
         <button data-testid="login-submit" type='submit' className='btn btn-primary w-75 d-block mx-auto mt-5'>Log In</button>
         <hr />
         {
