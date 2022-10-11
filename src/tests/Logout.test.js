@@ -10,7 +10,7 @@ jest.mock("react-router-dom", () => ({
 
 test("Should redirect to the login after logout", () => {
   const LogoutComponent = render(<Logout />);
-  const logOutBtn = LogoutComponent.getByTestId("logout");
+  const logOutBtn = LogoutComponent.getByTestId("logout-button");
   fireEvent.click(logOutBtn);
 
   expect(mockedUsedNavigate).toHaveBeenCalledWith("/");

@@ -13,7 +13,7 @@ export const Logout = () => {
 
   return (
     <button
-        data-testid="logout" 
+        data-testid="logout-button" 
         className="btn btn-outline-danger mt-3 ms-5"
         onClick={handleLogout}
         >

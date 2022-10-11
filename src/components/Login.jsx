@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { getAuthToken } from '../api'
+import { getAuthRole, getAuthToken } from '../api'
 
 
 
@@ -34,9 +33,8 @@ export const Login = () => {
       const responseToken = await getAuthToken(credentials); 
       const token = responseToken.data.authToken;
       
-      const responseRole = await getAuthToken(token); 
-
-      const role = responseRole.data[0].authority + responseRole.data[1].authority ;
+      const responseRole = await getAuthRole(token); 
+      const role = `${responseRole.data[0].authority} ${responseRole.data[1].authority}`;
 
       if(role.includes('ADMIN')){
          sessionStorage.setItem('role','ROLE_ADMIN');
@@ -46,19 +44,14 @@ export const Login = () => {
       }
       
       sessionStorage.setItem('token',token); 
-      
       nav('/bank/accounts'); 
 
     }catch(error){
-
       setError(true); 
-
-
     }
     
 
   }
-
 
   return (
     

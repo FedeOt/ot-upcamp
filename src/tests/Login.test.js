@@ -1,6 +1,7 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { act } from "react-dom/test-utils";
+import { getAuthRole, getAuthToken } from "../api";
 import { Login } from "../components/Login";
 
 const credentials = {
@@ -12,7 +13,7 @@ const testingRole = "ROLE_USER";
 
 const mockedUsedNavigate = jest.fn();
 
-jest.mock("axios");
+jest.mock("../api/index");
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -22,8 +23,8 @@ jest.mock("react-router-dom", () => ({
 test("Should access into the app after login", async () => {
   const login = render(<Login />);
 
-  axios.post.mockResolvedValue({ data: testingToken });
-  axios.get.mockResolvedValue({ data: [{ authority: testingRole }, ""] });
+  getAuthToken.mockResolvedValue({ data: testingToken });
+  getAuthRole.mockResolvedValue({ data: [{ authority: testingRole }, ""] });
 
   const inputUsername = login.getByTestId("username");
   const inputPassword = login.getByTestId("password");
