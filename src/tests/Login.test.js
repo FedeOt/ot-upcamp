@@ -1,5 +1,4 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import axios from "axios";
 import { act } from "react-dom/test-utils";
 import { getAuthRole, getAuthToken } from "../api";
 import { Login } from "../components/Login";
@@ -21,19 +20,19 @@ jest.mock("react-router-dom", () => ({
 }));
 
 test("Should access into the app after login", async () => {
-  const login = render(<Login />);
+  const view = render(<Login />);
 
   getAuthToken.mockResolvedValue({ data: testingToken });
   getAuthRole.mockResolvedValue({ data: [{ authority: testingRole }, ""] });
 
-  const inputUsername = login.getByTestId("username");
-  const inputPassword = login.getByTestId("password");
-  const submitBtn = login.getByTestId("login-submit");
+  const usernameInput = view.getByTestId("username");
+  const passwordInput = view.getByTestId("password");
+  const submitBtn = view.getByTestId("login-submit");
   act(() => {
-    fireEvent.change(inputUsername, {
+    fireEvent.change(usernameInput, {
       target: { value: credentials.username },
     });
-    fireEvent.change(inputPassword, {
+    fireEvent.change(passwordInput, {
       target: { value: credentials.password },
     });
     fireEvent.click(submitBtn);
