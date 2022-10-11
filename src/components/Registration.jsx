@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { ValidateFields } from "../helpers/validateRegisterFields";
 import { InputText } from "./InputText";
+import { InvalidField } from "./InvalidField";
 import { RadioButton } from "./RadioButton";
 
+ 
 const initialState = {
   address: "",
   country: "",
@@ -23,7 +26,7 @@ const initialState = {
 
 export const Registration = () => {
   const [formValues, setFormValues] = useState(initialState);
-
+  const [errors,setErrors] = useState({}); 
 
   const handleInputChange = ({ target }) => {
     setFormValues({
@@ -34,8 +37,15 @@ export const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const errors = ValidateFields(formValues); 
+    
+    if(Object.keys(errors).length > 0){
+      setErrors(errors); 
+    }else{
+      console.log(formValues);
+    }
 
-    console.log(formValues);
+   
   };
 
   return (
@@ -95,6 +105,10 @@ export const Registration = () => {
                 name="firstName"
                 value={formValues.firstName}
               />
+              {
+                errors.firstName && <InvalidField text="*First name is required"/>
+              }
+              
             </div>
 
             <div className="mt-3">
@@ -104,6 +118,9 @@ export const Registration = () => {
                 name="lastName"
                 value={formValues.lastName}
               />
+               {
+                errors.lastName && <InvalidField text="*Last name is required"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -113,6 +130,9 @@ export const Registration = () => {
                 name="emailAddress"
                 value={formValues.emailAddress}
               />
+              {
+                errors.emailAddress && <InvalidField text="*Invalid email address"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -124,6 +144,9 @@ export const Registration = () => {
                 value={formValues.password}
                 className="form-control w-75"
               />
+              {
+                errors.password && <InvalidField text="*Password must be 6 characters long"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -133,15 +156,23 @@ export const Registration = () => {
                 name="address"
                 value={formValues.address}
               />
+
+              {
+                errors.address && <InvalidField text="*Address is required"/>
+              }
             </div>
 
             <div className="mt-3">
               <strong>Birth Date</strong>
               <InputText
+                placeholder="mm/dd/yyyy"
                 onChange={handleInputChange}
                 name="dob"
                 value={formValues.dob}
               />
+              {
+                errors.dob && <InvalidField text="*Invalid date"/>
+              }
             </div>
           </div>
 

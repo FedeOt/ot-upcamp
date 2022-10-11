@@ -2,6 +2,7 @@
 export const InputText = (props) => {
     return (
         <input 
+        placeholder={props.placeholder}
         data-testid={props.testId}
         type="text" 
         onChange={props.onChange} 
