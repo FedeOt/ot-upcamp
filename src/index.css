@@ -107,6 +107,12 @@ code {
     width: 400px;
     margin-left: 0px;
   }
+
+  .create-user-form{
+    width: 100%;
+    display: block;
+    margin-left: 0px;
+  }
 }
 
 

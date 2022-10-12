@@ -29,6 +29,10 @@ export const Registration = () => {
   const [errors,setErrors] = useState({}); 
 
   const handleInputChange = ({ target }) => {
+    setErrors({
+      ...errors,
+      [target.name]:false
+    }); 
     setFormValues({
       ...formValues,
       [target.name]: target.value,
@@ -272,8 +276,8 @@ export const Registration = () => {
             </div>
           </div>
         </div>
-
-        <button type="submit" className="btn btn-info d-block">
+              <hr />
+        <button type="submit" style={{height:50}} className="btn btn-info d-block w-25 ms-5 mt-4">
           Create
         </button>
       </form>
