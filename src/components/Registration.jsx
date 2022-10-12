@@ -145,7 +145,7 @@ export const Registration = () => {
                 className="form-control w-75"
               />
               {
-                errors.password && <InvalidField text="*Password must be 6 characters long"/>
+                errors.password && <InvalidField text="*Password must be at least 6 characters long"/>
               }
             </div>
 
@@ -184,6 +184,9 @@ export const Registration = () => {
                 name="workPhone"
                 value={formValues.workPhone}
               />
+              {
+                errors.workPhone && <InvalidField text="*Work phone is required"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -193,6 +196,9 @@ export const Registration = () => {
                 name="locality"
                 value={formValues.locality}
               />
+              {
+                errors.locality && <InvalidField text="*Locality is required"/>
+              }
             </div>
             <div className="mt-3">
               <strong>Mobile Phone</strong>
@@ -201,6 +207,9 @@ export const Registration = () => {
                 name="mobilePhone"
                 value={formValues.mobilePhone}
               />
+              {
+                errors.mobilePhone && <InvalidField text="*Mobile phone is required"/>
+              }
             </div>
             <div className="mt-3">
               <strong>Region</strong>
@@ -209,6 +218,9 @@ export const Registration = () => {
                 name="region"
                 value={formValues.region}
               />
+              {
+                errors.region && <InvalidField text="*Region is required"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -218,6 +230,9 @@ export const Registration = () => {
                 name="ssn"
                 value={formValues.ssn}
               />
+              {
+                errors.ssn && <InvalidField text="*SSN is required"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -227,6 +242,9 @@ export const Registration = () => {
                 name="homePhone"
                 value={formValues.homePhone}
               />
+              {
+                errors.homePhone && <InvalidField text="*Home phone is required"/>
+              }
             </div>
 
             <div className="mt-3">
@@ -236,6 +254,9 @@ export const Registration = () => {
                 name="postalCode"
                 value={formValues.postalCode}
               />
+              {
+                errors.postalCode && <InvalidField text="*Postal code is required"/>   
+              }
             </div>
 
             <div className="mt-3">
@@ -245,6 +266,9 @@ export const Registration = () => {
                 name="country"
                 value={formValues.country}
               />
+              {
+                errors.country && <InvalidField text="*Country is required"/>
+              }
             </div>
           </div>
         </div>
