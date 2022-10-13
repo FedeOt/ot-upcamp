@@ -66,12 +66,12 @@ export const Registration = () => {
 
   return (
     <div style={{ paddingTop: 90 }}>
+      <div style={{marginLeft:400}}>
       {
-        apiError && apiError.map((element,index) =>
-        (<div style={{marginLeft:400}} className="alert alert-danger w-50 text-center fixed-top">
-         <p>{element}</p>
-        </div>))
+        apiError && apiError.map((el,inx) => <div className="w-75 alert alert-danger" key={inx}>{el}</div>)
       }
+      </div>
+      
 
       <form onSubmit={handleSubmit} className="create-user-form">
         <h3>Create new user</h3>
