@@ -37,3 +37,10 @@ export const updateAccount = (id, name) =>
     {},
     { headers: { Authorization: getAuthHeader() }, params: { newName: name } }
   );
+
+
+
+export const createNewUser = (user) =>
+    axiosClient.post('/user',user,{
+      headers:{Authorization:getAuthHeader()}
+    })

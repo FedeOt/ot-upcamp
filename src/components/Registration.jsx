@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createNewUser } from "../api";
 import { ValidateFields } from "../helpers/validateRegisterFields";
 import { InputText } from "./InputText";
 import { InvalidField } from "./InvalidField";
@@ -25,8 +27,11 @@ const initialState = {
 };
 
 export const Registration = () => {
+
+  const nav = useNavigate(); 
   const [formValues, setFormValues] = useState(initialState);
   const [errors,setErrors] = useState({}); 
+  const [apiError,setApiError] = useState(null); 
 
   const handleInputChange = ({ target }) => {
     setErrors({
@@ -39,14 +44,21 @@ export const Registration = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const errors = ValidateFields(formValues); 
     
     if(Object.keys(errors).length > 0){
       setErrors(errors); 
     }else{
-      console.log(formValues);
+        
+        try{
+          await createNewUser(formValues);
+          nav('/');
+        }catch(err){
+          setApiError(err.response.data); 
+          console.log(err.response.data); 
+        }
     }
 
    
@@ -54,6 +66,13 @@ export const Registration = () => {
 
   return (
     <div style={{ paddingTop: 90 }}>
+      {
+        apiError && apiError.map((element,index) =>
+        (<div style={{marginLeft:400}} className="alert alert-danger w-50 text-center fixed-top">
+         <p>{element}</p>
+        </div>))
+      }
+
       <form onSubmit={handleSubmit} className="create-user-form">
         <h3>Create new user</h3>
         <hr />
@@ -281,6 +300,7 @@ export const Registration = () => {
           Create
         </button>
       </form>
+      
     </div>
   );
 };
