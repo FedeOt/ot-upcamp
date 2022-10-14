@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createNewUser } from "../api";
+import { addRoleApi, createNewUser } from "../api";
 import { ValidateFields } from "../helpers/validateRegisterFields";
 import { InputText } from "./InputText";
 import { InvalidField } from "./InvalidField";
@@ -53,11 +53,12 @@ export const Registration = () => {
     }else{
         
         try{
-          await createNewUser(formValues);
+          const response = await createNewUser(formValues);
+          
+          await addRoleApi(response.data.id); 
           nav('/');
         }catch(err){
           setApiError(err.response.data); 
-          console.log(err.response.data); 
         }
     }
 

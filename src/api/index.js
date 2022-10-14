@@ -44,3 +44,10 @@ export const createNewUser = (user) =>
     axiosClient.post('/user',user,{
       headers:{Authorization:getAuthHeader()}
     })
+
+export const addRoleApi = (id) => 
+    axiosClient.put(`/user/${id}/role?role=API`,{},
+      {
+        headers: {Authorization:getAuthHeader()}
+      }
+    )    
