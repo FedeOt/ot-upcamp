@@ -1,13 +1,19 @@
 
 import { Link } from 'react-router-dom'
+import { getRole } from '../axios/Instance'
 import { sidebarData } from '../data/sidebarData'
 import { getRole } from '../helpers/sessionStorage'
+import { Logout } from './Logout'
+
 
 
 export const Sidebar = () => {
   return (
     <div className='Sidebar'>
-      <h3 className='title'>Banking</h3>
+      {
+        getRole() && <Logout/>
+      }
+      
         <hr />
       <ul className='sidebar-ul'>
         {
