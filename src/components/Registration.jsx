@@ -129,6 +129,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="firstName"
                 value={formValues.firstName}
+                testId="registration-firstName"
               />
               {
                 errors.firstName && <InvalidField text="*First name is required"/>
@@ -142,6 +143,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="lastName"
                 value={formValues.lastName}
+                testId="registration-lastName"
               />
                {
                 errors.lastName && <InvalidField text="*Last name is required"/>
@@ -154,6 +156,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="emailAddress"
                 value={formValues.emailAddress}
+                testId="registration-email"
               />
               {
                 errors.emailAddress && <InvalidField text="*Invalid email address"/>
@@ -168,6 +171,7 @@ export const Registration = () => {
                 name="password"
                 value={formValues.password}
                 className="form-control w-75"
+                data-testid="registration-password"
               />
               {
                 errors.password && <InvalidField text="*Password must be at least 6 characters long"/>
@@ -180,6 +184,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="address"
                 value={formValues.address}
+                testId="registration-address"
               />
 
               {
@@ -194,6 +199,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="dob"
                 value={formValues.dob}
+                testId="registration-dob"
               />
               {
                 errors.dob && <InvalidField text="*Invalid date"/>
@@ -208,6 +214,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="workPhone"
                 value={formValues.workPhone}
+                testId="registration-workPhone"
               />
               {
                 errors.workPhone && <InvalidField text="*Work phone is required"/>
@@ -220,6 +227,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="locality"
                 value={formValues.locality}
+                testId="registration-locality"
               />
               {
                 errors.locality && <InvalidField text="*Locality is required"/>
@@ -231,6 +239,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="mobilePhone"
                 value={formValues.mobilePhone}
+                testId="registration-mobilePhone"
               />
               {
                 errors.mobilePhone && <InvalidField text="*Mobile phone is required"/>
@@ -242,6 +251,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="region"
                 value={formValues.region}
+                testId="registration-region"
               />
               {
                 errors.region && <InvalidField text="*Region is required"/>
@@ -255,6 +265,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="ssn"
                 value={formValues.ssn}
+                testId="registration-ssn"
               />
               {
                 errors.ssn && <InvalidField text="*Invalid SSN Ex: 999-99-9999"/>
@@ -267,6 +278,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="homePhone"
                 value={formValues.homePhone}
+                testId="registration-homePhone"
               />
               {
                 errors.homePhone && <InvalidField text="*Home phone is required"/>
@@ -279,6 +291,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="postalCode"
                 value={formValues.postalCode}
+                testId="registration-postalCode"
               />
               {
                 errors.postalCode && <InvalidField text="*Postal code is required"/>   
@@ -291,6 +304,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="country"
                 value={formValues.country}
+                testId="registration-country"
               />
               {
                 errors.country && <InvalidField text="*Country is required"/>
