@@ -313,7 +313,7 @@ export const Registration = () => {
           </div>
         </div>
               <hr />
-        <button type="submit" style={{height:50}} className="btn btn-info d-block w-25 ms-5 mt-4">
+        <button data-testid="registration-submit" type="submit" style={{height:50}} className="btn btn-info d-block w-25 ms-5 mt-4">
           Create
         </button>
       </form>
