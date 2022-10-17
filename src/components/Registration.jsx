@@ -54,7 +54,6 @@ export const Registration = () => {
         
         try{
           const response = await createNewUser(formValues);
-          
           await addRoleApi(response.data.id); 
           nav('/');
         }catch(err){
