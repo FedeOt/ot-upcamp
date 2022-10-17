@@ -3,7 +3,8 @@ import { validateDate } from "../moment/validateDate";
 export const ValidateFields = (data) =>{
 
     const errors = {};
-    const emailRegex = new RegExp('[a-z0-9]+@','g')
+    const emailRegex = new RegExp('[a-z0-9]+@');
+    const ssnRegex = new RegExp('[0-9]{3}-[0-9]{2}-[0-9]{4}'); 
 
     if(data.firstName.trim() === ''){
         errors.firstName = true; 
@@ -35,7 +36,7 @@ export const ValidateFields = (data) =>{
     if(data.region.trim() === ''){
         errors.region = true; 
     }
-    if(data.ssn.trim() === ''){
+    if(data.ssn.trim() === '' || !ssnRegex.test(data.ssn)){
         errors.ssn = true; 
     }
     if(data.homePhone.trim() === ''){

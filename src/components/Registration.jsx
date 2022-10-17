@@ -34,6 +34,7 @@ export const Registration = () => {
   const [apiError,setApiError] = useState(null); 
 
   const handleInputChange = ({ target }) => {
+    setApiError(null); 
     setErrors({
       ...errors,
       [target.name]:false
@@ -57,7 +58,8 @@ export const Registration = () => {
           await addRoleApi(response.data.id); 
           nav('/');
         }catch(err){
-          setApiError(err.response.data); 
+          console.log(err); 
+          setApiError(err.response.data.message); 
         }
     }
 
@@ -68,7 +70,7 @@ export const Registration = () => {
     <div style={{ paddingTop: 90 }}>
       <div style={{marginLeft:400}}>
       {
-        apiError && apiError.map((el,inx) => <div className="w-75 alert alert-danger" key={inx}>{el}</div>)
+        apiError && <div className="w-75 alert alert-danger">{apiError}</div>
       }
       </div>
       
@@ -249,12 +251,13 @@ export const Registration = () => {
             <div className="mt-3">
               <strong>SSN</strong>
               <InputText
+                placeholder="###-##-####"
                 onChange={handleInputChange}
                 name="ssn"
                 value={formValues.ssn}
               />
               {
-                errors.ssn && <InvalidField text="*SSN is required"/>
+                errors.ssn && <InvalidField text="*Invalid SSN Ex: 999-99-9999"/>
               }
             </div>
 
