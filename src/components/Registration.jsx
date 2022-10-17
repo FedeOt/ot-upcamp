@@ -156,7 +156,7 @@ export const Registration = () => {
                 onChange={handleInputChange}
                 name="emailAddress"
                 value={formValues.emailAddress}
-                testId="registration-email"
+                testId="registration-emailAddress"
               />
               {
                 errors.emailAddress && <InvalidField text="*Invalid email address"/>
