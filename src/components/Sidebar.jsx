@@ -1,6 +1,5 @@
-
 import { Link } from 'react-router-dom'
-import { getRole } from '../axios/Instance'
+import { getRole } from '../helpers/sessionStorage'
 import { sidebarData } from '../data/sidebarData'
 import { Logout } from './Logout'
 
