@@ -1,7 +1,7 @@
-
 import { Route, Routes } from 'react-router-dom';
 import { CheckingAccountCreation } from '../components/CheckingAccountCreation';
 import { CheckingAccountsList } from '../components/CheckingAccountsList';
+import { Deposit } from '../components/Deposit';
 import { Sidebar } from '../components/Sidebar';
 
 
@@ -18,6 +18,7 @@ export const MainScreen = () => {
           <Routes>
             <Route path='accounts' element={<CheckingAccountsList/>}/>
             <Route path='creation' element={<CheckingAccountCreation/>}/>
+            <Route path='deposit' element={<Deposit/>}/>
           </Routes>
 
 
