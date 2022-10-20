@@ -11,7 +11,9 @@ export const Deposit = () => {
     const [transactionValues,setTransactionValues] = useState({
         amount:'',
         currentAccount:''
-    }) 
+    }); 
+    const [error,setError] = useState(false); 
+    const [success,setSuccess] = useState(false); 
 
     useEffect(()=>{
         getAllCheckingAccounts()
@@ -31,9 +33,19 @@ export const Deposit = () => {
 
     const handleSubmit = async(e) =>{
         e.preventDefault(); 
-        console.log(transactionValues); 
-        const response = await transaction('DPT',transactionValues.amount,'Deposit',transactionValues.currentAccount); 
-     
+        try{
+            await transaction('DPT',transactionValues.amount,'Deposit',transactionValues.currentAccount);
+            setSuccess(true); 
+            setTimeout(() => {
+                setSuccess(false); 
+            }, 3000);
+
+        }catch(err){
+            setError(true); 
+        }
+        
+        
+        
 
     }
 
@@ -58,6 +70,14 @@ export const Deposit = () => {
             <button className='btn btn-success mt-4'>Deposit</button>
             
         </form>
+
+        {
+            error && <div className='alert alert-danger w-50 mt-3' style={{marginLeft:450}}> Something went wrong! </div>
+        }
+
+        {
+            success && <div className='alert alert-success w-50 mt-3' style={{marginLeft:450}}>Transaction has been done</div>
+        }
 
     </div>
   )
