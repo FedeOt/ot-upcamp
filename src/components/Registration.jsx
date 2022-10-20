@@ -4,7 +4,7 @@ import { addApiRole, createNewUser } from "../api";
 import { initialState } from "../data/registrationInitialState";
 import { validateFields } from "../helpers/validateRegisterFields";
 import { InputText } from "./InputText";
-import { InvalidFieldMessage } from "./InvalidField";
+import { InvalidFieldMessage } from "./InvalidFieldMessage";
 import { RadioButton } from "./RadioButton";
 
 
