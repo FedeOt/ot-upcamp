@@ -1,30 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addRoleApi, createNewUser } from "../api";
-import { ValidateFields } from "../helpers/validateRegisterFields";
+import { addApiRole, createNewUser } from "../api";
+import { initialState } from "../data/registrationInitialState";
+import { validateFields } from "../helpers/validateRegisterFields";
 import { InputText } from "./InputText";
-import { InvalidField } from "./InvalidField";
+import { InvalidFieldMessage } from "./InvalidField";
 import { RadioButton } from "./RadioButton";
 
- 
-const initialState = {
-  address: "",
-  country: "",
-  dob: "",
-  emailAddress: "",
-  firstName: "",
-  gender: "M",
-  homePhone: "",
-  lastName: "",
-  locality: "",
-  mobilePhone: "",
-  password: "",
-  postalCode: "",
-  region: "",
-  ssn: "",
-  title: "Mr.",
-  workPhone: "",
-};
+
+
 
 export const Registration = () => {
 
@@ -47,7 +31,7 @@ export const Registration = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const errors = ValidateFields(formValues); 
+    const errors = validateFields(formValues); 
     
     if(Object.keys(errors).length > 0){
       setErrors(errors); 
@@ -55,7 +39,7 @@ export const Registration = () => {
         
         try{
           const response = await createNewUser(formValues);
-          await addRoleApi(response.data.id); 
+          await addApiRole(response.data.id); 
           nav('/');
         }catch(err){
           console.log(err); 
@@ -132,7 +116,7 @@ export const Registration = () => {
                 testId="registration-firstName"
               />
               {
-                errors.firstName && <InvalidField text="*First name is required"/>
+                errors.firstName && <InvalidFieldMessage text="*First name is required"/>
               }
               
             </div>
@@ -146,7 +130,7 @@ export const Registration = () => {
                 testId="registration-lastName"
               />
                {
-                errors.lastName && <InvalidField text="*Last name is required"/>
+                errors.lastName && <InvalidFieldMessage text="*Last name is required"/>
               }
             </div>
 
@@ -159,7 +143,7 @@ export const Registration = () => {
                 testId="registration-emailAddress"
               />
               {
-                errors.emailAddress && <InvalidField text="*Invalid email address"/>
+                errors.emailAddress && <InvalidFieldMessage text="*Invalid email address"/>
               }
             </div>
 
@@ -174,7 +158,7 @@ export const Registration = () => {
                 data-testid="registration-password"
               />
               {
-                errors.password && <InvalidField text="*Password must be at least 6 characters long"/>
+                errors.password && <InvalidFieldMessage text="*Password must be at least 6 characters long"/>
               }
             </div>
 
@@ -188,7 +172,7 @@ export const Registration = () => {
               />
 
               {
-                errors.address && <InvalidField text="*Address is required"/>
+                errors.address && <InvalidFieldMessage text="*Address is required"/>
               }
             </div>
 
@@ -202,7 +186,7 @@ export const Registration = () => {
                 testId="registration-dob"
               />
               {
-                errors.dob && <InvalidField text="*Invalid date"/>
+                errors.dob && <InvalidFieldMessage text="*Invalid date"/>
               }
             </div>
           </div>
@@ -217,7 +201,7 @@ export const Registration = () => {
                 testId="registration-workPhone"
               />
               {
-                errors.workPhone && <InvalidField text="*Work phone is required"/>
+                errors.workPhone && <InvalidFieldMessage text="*Work phone is required"/>
               }
             </div>
 
@@ -230,7 +214,7 @@ export const Registration = () => {
                 testId="registration-locality"
               />
               {
-                errors.locality && <InvalidField text="*Locality is required"/>
+                errors.locality && <InvalidFieldMessage text="*Locality is required"/>
               }
             </div>
             <div className="mt-3">
@@ -242,7 +226,7 @@ export const Registration = () => {
                 testId="registration-mobilePhone"
               />
               {
-                errors.mobilePhone && <InvalidField text="*Mobile phone is required"/>
+                errors.mobilePhone && <InvalidFieldMessage text="*Mobile phone is required"/>
               }
             </div>
             <div className="mt-3">
@@ -254,7 +238,7 @@ export const Registration = () => {
                 testId="registration-region"
               />
               {
-                errors.region && <InvalidField text="*Region is required"/>
+                errors.region && <InvalidFieldMessage text="*Region is required"/>
               }
             </div>
 
@@ -268,7 +252,7 @@ export const Registration = () => {
                 testId="registration-ssn"
               />
               {
-                errors.ssn && <InvalidField text="*Invalid SSN Ex: 999-99-9999"/>
+                errors.ssn && <InvalidFieldMessage text="*Invalid SSN Ex: 999-99-9999"/>
               }
             </div>
 
@@ -281,7 +265,7 @@ export const Registration = () => {
                 testId="registration-homePhone"
               />
               {
-                errors.homePhone && <InvalidField text="*Home phone is required"/>
+                errors.homePhone && <InvalidFieldMessage text="*Home phone is required"/>
               }
             </div>
 
@@ -294,7 +278,7 @@ export const Registration = () => {
                 testId="registration-postalCode"
               />
               {
-                errors.postalCode && <InvalidField text="*Postal code is required"/>   
+                errors.postalCode && <InvalidFieldMessage text="*Postal code is required"/>   
               }
             </div>
 
@@ -307,7 +291,7 @@ export const Registration = () => {
                 testId="registration-country"
               />
               {
-                errors.country && <InvalidField text="*Country is required"/>
+                errors.country && <InvalidFieldMessage text="*Country is required"/>
               }
             </div>
           </div>

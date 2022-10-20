@@ -41,7 +41,7 @@ export const createNewUser = (user) =>
     headers: { Authorization: getAuthHeader() },
   });
 
-export const addRoleApi = (id) =>
+export const addApiRole = (id) =>
   axiosClient.put(
     `/user/${id}/role?role=API`,
     {},

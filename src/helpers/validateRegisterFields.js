@@ -1,6 +1,6 @@
 import { validateDate } from "../moment/validateDate";
 
-export const ValidateFields = (data) =>{
+export const validateFields = (data) =>{
 
     const errors = {};
     const emailRegex = new RegExp('[a-z0-9]+@');

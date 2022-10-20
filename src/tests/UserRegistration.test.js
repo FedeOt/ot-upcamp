@@ -1,5 +1,5 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { addRoleApi, createNewUser } from "../api";
+import { addApiRole, createNewUser } from "../api";
 import { Registration } from "../components/Registration";
 
 
@@ -30,12 +30,12 @@ const testUser = {
     workPhone: "99999999",
   };
 
-test('Should redirect to the login after create a new user', async()=>{
+test('Should redirect to the login after creating a new user', async()=>{
 
     createNewUser.mockResolvedValue({data:{
         id:150
     }})
-    addRoleApi.mockResolvedValue({}); 
+    addApiRole.mockResolvedValue({}); 
     const view = render(<Registration/>);
 
     const inputs = {};

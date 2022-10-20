@@ -1,4 +1,4 @@
-import moment from "moment/moment";
+import moment from "moment";
 
 export const validateDate = (date) => {
     const newDate = moment(date,"MM-DD-YYYY");
