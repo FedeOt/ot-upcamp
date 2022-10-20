@@ -36,6 +36,7 @@ export const updateAccount = (id, name) =>
     { headers: { Authorization: getAuthHeader() }, params: { newName: name } }
   );
 
+
 export const createNewUser = (user) =>
   axiosClient.post("/user", user, {
     headers: { Authorization: getAuthHeader() },
@@ -49,3 +50,16 @@ export const addApiRole = (id) =>
       headers: { Authorization: getAuthHeader() },
     }
   );
+
+
+export const getAuthToken = (credentials) =>
+    axiosClient.post('/auth',{},{params:{
+      username:credentials.username,
+      password:credentials.password
+    }}); 
+
+export const getAuthRole = (token) =>
+    axiosClient.get('/user/role',{
+      headers:{Authorization:`Bearer ${token}`}
+    });
+
