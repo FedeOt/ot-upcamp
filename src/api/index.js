@@ -49,3 +49,11 @@ export const getAuthRole = (token) =>
     axiosClient.get('/user/role',{
       headers:{Authorization:`Bearer ${token}`}
     });
+
+
+export const transaction = (type,amount,description,id) =>
+    axiosClient.post(`/account/${id}/transaction`,{
+      amount,
+      transactionTypeCode:type,
+      description
+    },{headers:{Authorization:getAuthHeader()}})
