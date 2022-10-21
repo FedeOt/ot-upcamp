@@ -25,7 +25,7 @@ export const Sidebar = () => {
       <hr />
       {
         getRole() === 'ROLE_ADMIN' && 
-        <Link className='link' to='/bank/Registration'>Create User</Link>
+        <Link className='link' to='/bank/user/create'>Create User</Link>
       }
     </div>
   )

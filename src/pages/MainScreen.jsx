@@ -18,8 +18,8 @@ export const MainScreen = () => {
         <Sidebar />
           <Routes>
             <Route path='accounts' element={<CheckingAccountsList/>}/>
-            <Route path='creation' element={<CheckingAccountCreation/>}/>
-            <Route path='registration' element={<Registration/>}/>
+            <Route path='/checking-account/create' element={<CheckingAccountCreation/>}/>
+            <Route path='/user/create' element={<Registration/>}/>
           </Routes>
 
 

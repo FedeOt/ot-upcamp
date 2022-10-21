@@ -29,14 +29,10 @@ export const validateFields = (data) =>{
                 errors[prop] = true; 
             }
         }
-        
         if(data[prop].trim() === ''){
             errors[prop] = true; 
         }
-
     }
-
     return errors; 
-
 }
 

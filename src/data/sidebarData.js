@@ -9,7 +9,7 @@ export const sidebarData = [
     },
     {
         title:"Create Checking Account",
-        link:"/bank/creation"
+        link:"/bank/checking-account/create"
 
     },
     
