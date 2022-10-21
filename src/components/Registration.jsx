@@ -32,7 +32,7 @@ export const Registration = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const errors = validateFields(formValues); 
-    
+     
     if(Object.keys(errors).length > 0){
       setErrors(errors); 
     }else{
@@ -46,7 +46,7 @@ export const Registration = () => {
           setApiError(err.response.data.message); 
         }
     }
-
+    
    
   };
 
