@@ -1,8 +1,8 @@
-
 import { Link } from 'react-router-dom'
-import { getRole } from '../axios/Instance'
 import { sidebarData } from '../data/sidebarData'
+import { getRole } from '../helpers/sessionStorage'
 import { Logout } from './Logout'
+
 
 
 export const Sidebar = () => {
@@ -22,6 +22,11 @@ export const Sidebar = () => {
             ))
         }
       </ul>
+      <hr />
+      {
+        getRole() === 'ROLE_ADMIN' && 
+        <Link className='link' to='/bank/user/create'>Create User</Link>
+      }
     </div>
   )
 }
