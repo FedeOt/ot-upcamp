@@ -57,7 +57,7 @@ export const Transaction = (props) => {
             <h3>{props.type === 'DPT' ? 'Deposit': 'Withdrawal'}</h3>
             <hr/>
             <span>Select account</span>
-            <select name='currentAccount' className='form-select w-25' onChange={handleInputChange}>
+            <select data-testid="transaction-account" name='currentAccount' className='form-select w-25' onChange={handleInputChange}>
                 <option value="None">-----</option>
                 {
                     !loading && accounts.map((element,index)=> <option key={index} value={element.id}>{element.name}</option>)
@@ -65,10 +65,10 @@ export const Transaction = (props) => {
             </select>
             <div className='mt-4'>
                 <span className='mt-4'>Select amount</span>
-                <input onChange={handleInputChange} name='amount' type="text" className='form-control w-25' placeholder='Amount'  />
+                <input data-testid="transaction-amount" onChange={handleInputChange} name='amount' type="text" className='form-control w-25' placeholder='Amount'  />
             </div>
 
-            <button className='btn btn-success mt-4'>{props.type === 'DPT' ? 'Deposit': 'Withdrawal' }</button>
+            <button data-testid="transaction-submit" className='btn btn-success mt-4'>{props.type === 'DPT' ? 'Deposit': 'Withdrawal' }</button>
             
         </form>
 
@@ -77,7 +77,7 @@ export const Transaction = (props) => {
         }
 
         {
-            success && <div className='alert alert-success w-50 mt-3' style={{marginLeft:450}}>Transaction has been done</div>
+            success && <div data-testid="transaction-success" className='alert alert-success w-50 mt-3' style={{marginLeft:450}}>Transaction has been done</div>
         }
 
     </div>
