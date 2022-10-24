@@ -1,4 +1,4 @@
-import moment from "moment/moment";
+import moment from "moment";
 
 
 export const formatDate = (date) => moment(date).format("MMM Do YY"); 

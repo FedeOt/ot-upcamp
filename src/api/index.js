@@ -1,15 +1,13 @@
 import { axiosClient } from "../axios/Instance";
 import { getAuthHeader } from "../helpers/sessionStorage";
 
-
 export const getAllCheckingAccounts = () => {
   const role = sessionStorage.getItem("role");
 
-  const partialUrl = role === 'ROLE_USER' ? 'user' : ''; 
-    return axiosClient.get(`${partialUrl}/account/checking`, {
-      headers: { Authorization: getAuthHeader() },
-    }); 
-
+  const partialUrl = role === "ROLE_USER" ? "user" : "";
+  return axiosClient.get(`${partialUrl}/account/checking`, {
+    headers: { Authorization: getAuthHeader() },
+  });
 };
 
 export const createCheckingAccount = (account) =>
@@ -39,6 +37,21 @@ export const updateAccount = (id, name) =>
   );
 
 
+export const createNewUser = (user) =>
+  axiosClient.post("/user", user, {
+    headers: { Authorization: getAuthHeader() },
+  });
+
+export const addApiRole = (id) =>
+  axiosClient.put(
+    `/user/${id}/role?role=API`,
+    {},
+    {
+      headers: { Authorization: getAuthHeader() },
+    }
+  );
+
+
 export const getAuthToken = (credentials) =>
     axiosClient.post('/auth',{},{params:{
       username:credentials.username,
@@ -57,3 +70,4 @@ export const transaction = (type,amount,description,id) =>
       transactionTypeCode:type,
       description
     },{headers:{Authorization:getAuthHeader()}})
+
