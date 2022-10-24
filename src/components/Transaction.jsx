@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import { getAllCheckingAccounts, transaction } from '../api';
 
-export const Deposit = () => {
+export const Transaction = (props) => {
 
 
     const [accounts,setAccounts] = useState([]); 
@@ -34,14 +34,15 @@ export const Deposit = () => {
     const handleSubmit = async(e) =>{
         e.preventDefault(); 
         try{
-            await transaction('DPT',transactionValues.amount,'Deposit',transactionValues.currentAccount);
+            await transaction(props.type,transactionValues.amount,props.type,transactionValues.currentAccount);
             setSuccess(true); 
             setTimeout(() => {
                 setSuccess(false); 
             }, 3000);
 
         }catch(err){
-            setError(true); 
+            setError(true);
+            console.log(err);  
         }
         
         
@@ -53,7 +54,7 @@ export const Deposit = () => {
   return (
     <div className='p-5'> 
         <form onSubmit={handleSubmit} className='pt-5 border border-dark w-50 p-5 rounded' style={{marginLeft:450}}>
-            <h3>Deposit</h3>
+            <h3>{props.type === 'DPT' ? 'Deposit': 'Withdrawal'}</h3>
             <hr/>
             <span>Select account</span>
             <select name='currentAccount' className='form-select w-25' onChange={handleInputChange}>
@@ -67,7 +68,7 @@ export const Deposit = () => {
                 <input onChange={handleInputChange} name='amount' type="text" className='form-control w-25' placeholder='Amount'  />
             </div>
 
-            <button className='btn btn-success mt-4'>Deposit</button>
+            <button className='btn btn-success mt-4'>{props.type === 'DPT' ? 'Deposit': 'Withdrawal' }</button>
             
         </form>
 

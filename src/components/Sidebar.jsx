@@ -30,7 +30,11 @@ export const Sidebar = () => {
 
       {
         getRole() === 'ROLE_USER' && 
+        <div>
         <Link className='link' to='/bank/checking-account/deposit'>Deposit</Link>
+        <Link className='link' to='/bank/checking-account/withdrawal'>Withdrawal</Link>
+        </div>
+        
       }
     </div>
   )
