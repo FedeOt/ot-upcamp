@@ -26,7 +26,7 @@ export const AccountCard = (props) => {
               <div className="card-body">
                   <h5 className="card-title">{props.account.name}</h5>
                   <hr />
-                  <p className="card-text">Opening balance $ {props.account.openingBalance}</p>
+                  <p className="card-text">Current balance $ {props.account.currentBalance}</p>
                   <p className='card-text'><strong>Type</strong> {props.account.accountType.name}</p>
                   <p className='card-text'><strong>Number </strong> {props.account.accountNumber}</p>
                   <hr />

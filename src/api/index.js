@@ -63,3 +63,11 @@ export const getAuthRole = (token) =>
       headers:{Authorization:`Bearer ${token}`}
     });
 
+
+export const executeTransaction = ({type,amount,description,id}) =>
+    axiosClient.post(`/account/${id}/transaction`,{
+      amount,
+      transactionTypeCode:type,
+      description
+    },{headers:{Authorization:getAuthHeader()}})
+
