@@ -10,7 +10,7 @@ export const Transaction = (props) => {
     const [loading,setLoading] = useState(true); 
     const [transactionValues,setTransactionValues] = useState({
         amount:'',
-        currentAccount:''
+        id:''
     }); 
     const [error,setError] = useState(false); 
     const [success,setSuccess] = useState(false); 
@@ -34,7 +34,12 @@ export const Transaction = (props) => {
     const handleSubmit = async(e) =>{
         e.preventDefault(); 
         try{
-            await executeTransaction(props.type,transactionValues.amount,props.type,transactionValues.currentAccount);
+            await executeTransaction({
+                ...transactionValues,
+                type:props.type,
+                description:props.type,
+                
+            });
             setSuccess(true); 
             setTimeout(() => {
                 setSuccess(false); 
@@ -57,7 +62,7 @@ export const Transaction = (props) => {
             <h3>{props.type === 'DPT' ? 'Deposit': 'Withdrawal'}</h3>
             <hr/>
             <span>Select account</span>
-            <select data-testid="transaction-account" name='currentAccount' className='form-select w-25' onChange={handleInputChange}>
+            <select data-testid="transaction-account" name='id' className='form-select w-25' onChange={handleInputChange}>
                 <option value="None">-----</option>
                 {
                     !loading && accounts.map((element,index)=> <option key={index} value={element.id}>{element.name}</option>)

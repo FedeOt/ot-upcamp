@@ -64,7 +64,7 @@ export const getAuthRole = (token) =>
     });
 
 
-export const executeTransaction = (type,amount,description,id) =>
+export const executeTransaction = ({type,amount,description,id}) =>
     axiosClient.post(`/account/${id}/transaction`,{
       amount,
       transactionTypeCode:type,
