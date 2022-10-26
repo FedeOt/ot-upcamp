@@ -15,9 +15,29 @@ const resolvedValue = {
 
 jest.mock("../api/index");
 
-test("Should make a transaction in the selected account", async () => {
+test("Should make a deposit in the selected account", async () => {
   getAllCheckingAccounts.mockResolvedValue(resolvedValue);
-  const view = render(<Transaction />);
+  const view = render(<Transaction type="DPT"/>);
+
+  const accountSelect = view.getByTestId("transaction-account");
+  fireEvent.change(accountSelect, { target: { value: accountId } });
+
+  const transactionAmountInput = view.getByTestId("transaction-amount");
+  fireEvent.change(transactionAmountInput, {
+    target: { value: transactionAmount },
+  });
+
+  const submitBtn = view.getByTestId("transaction-submit");
+  fireEvent.click(submitBtn);
+
+  await waitFor(() => {
+    expect(view.getByTestId("transaction-success")).toBeInTheDocument();
+  });
+});
+
+test("Should make a withdrawal in the selected account", async () => {
+  getAllCheckingAccounts.mockResolvedValue(resolvedValue);
+  const view = render(<Transaction type="WTH"/>);
 
   const accountSelect = view.getByTestId("transaction-account");
   fireEvent.change(accountSelect, { target: { value: accountId } });
