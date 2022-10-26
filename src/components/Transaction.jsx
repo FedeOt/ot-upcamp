@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
-import { getAllCheckingAccounts, transaction } from '../api';
+import { getAllCheckingAccounts, executeTransaction } from '../api';
 
 export const Transaction = (props) => {
 
@@ -34,7 +34,7 @@ export const Transaction = (props) => {
     const handleSubmit = async(e) =>{
         e.preventDefault(); 
         try{
-            await transaction(props.type,transactionValues.amount,props.type,transactionValues.currentAccount);
+            await executeTransaction(props.type,transactionValues.amount,props.type,transactionValues.currentAccount);
             setSuccess(true); 
             setTimeout(() => {
                 setSuccess(false); 
